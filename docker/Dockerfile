@@ -13,8 +13,9 @@ RUN pip install awscli boto3
 WORKDIR /
 
 # Install bcl2fastq
-RUN mkdir /bcl2fastq
-tar -xzvf misc/bcl2fastq2-v2-20-0.tar.gz -C /bcl2fastq/
+RUN mkdir -p /bcl2fastq
+COPY misc/bcl2fastq2-v2-20-0.tar.gz /
+RUN tar -xzvf /bcl2fastq2-v2-20-0.tar.gz -C /bcl2fastq
 ENV PATH="/bcl2fastq/usr/local/bin/:$PATH"
 
 # copy relevant scripts to root dir

@@ -1,4 +1,4 @@
-NAME=bclfastq
+NAME=bcl2fastq
 TAG=00.00.00
 
 all: build push
