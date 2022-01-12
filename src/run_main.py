@@ -4,6 +4,7 @@
 # Template wrapper script that runs a command-line program within a Docker container.
 #
 import os, subprocess, sys
+from datetime import datetime
 sys.path.append('global_utils/src/')
 import module_utils
 
@@ -34,11 +35,28 @@ def runOtherPost( input_dir, output_dir, run_json ):
 
 
 def runMain():
+    # time the duration of module container run
+    run_start = datetime.now()
     print('Container running...')
+    
+    # initialize program run
     run_json = module_utils.initProgram()
+    
+    # do any pre-processing (specific to module)
     runOtherPre( run_json['local_input_dir'], run_json['local_output_dir'], run_json )
+    
+    # run main program
     module_utils.runProgram( run_json['program_arguments'], run_json['local_output_file'] )
+    
+    # do any post-processing
     runOtherPost( run_json['local_input_dir'], run_json['local_output_dir'], run_json )
+
+    # create run log that includes program run duration
+    run_end = datetime.now()
+    run_json['module_run_duration'] = str(run_end - run_start)
+    module_utils.logRun( run_json, run_json['local_output_dir'] )
+    
+    # upload output data files
     module_utils.uploadOutput( run_json['local_output_dir'], run_json['remote_output_dir'] )
     print('DONE!')
     

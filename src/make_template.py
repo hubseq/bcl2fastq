@@ -7,7 +7,7 @@ with open(MODULE+'.template.json','w') as fout:
 io_dryrun_json = {'input': ['s3://npipublicinternal/test/bcl/'], 'output': ['s3://npipublicinternal/test/bcl_out/'], 'alternate_inputs': [], 'alternate_outputs': ['s3://npipublicinternal/test/bcl/test.samplesheet.csv'], 'program_arguments': '', 'sample_id': MODULE+'_test', 'dryrun': ''}
 io_json = {'input': ['s3://npipublicinternal/test/bcl/'], 'output': ['s3://npipublicinternal/test/bcl_out/'], 'alternate_inputs': ['s3://npipublicinternal/test/bcl/test.samplesheet.csv'], 'alternate_outputs': [], 'program_arguments': '', 'sample_id': MODULE+'_test'} 
 
-with open(MODULE+'_dryrun_test.io.json','w') as fout:
+with open(MODULE+'.dryrun_test.io.json','w') as fout:
     json.dump(io_dryrun_json, fout)
-with open(MODULE+'_test.io.json','w') as fout:
+with open(MODULE+'.test.io.json','w') as fout:
     json.dump(io_json, fout)    
