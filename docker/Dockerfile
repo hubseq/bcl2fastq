@@ -20,11 +20,11 @@ ENV PATH="/bcl2fastq/usr/local/bin/:$PATH"
 
 # copy relevant scripts to root dir
 RUN mkdir -p global_utils/src
-COPY src/run_program.py /
+COPY src/run_main.py /
 COPY src/global_utils/src/module_utils.py /global_utils/src/
 COPY src/global_utils/src/file_utils.py /global_utils/src/
 COPY src/global_utils/src/global_keys.py /global_utils/src/
 COPY src/global_utils/src/aws_s3_utils.py /global_utils/src/
 ENV PATH="/usr/local/bin/:$PATH"
 
-ENTRYPOINT ["python","/run_program.py"]                                           
+ENTRYPOINT ["python","/run_main.py"]                                           
