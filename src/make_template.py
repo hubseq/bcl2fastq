@@ -11,3 +11,8 @@ with open(MODULE+'.dryrun_test.io.json','w') as fout:
     json.dump(io_dryrun_json, fout)
 with open(MODULE+'.test.io.json','w') as fout:
     json.dump(io_json, fout)    
+
+# job info test JSONs
+job_json = {"container_overrides": {"command": ["--module_name", MODULE, "--run_arguments", "s3://npipublicinternal/test/modules/"+MODULE+"/job/"+MODULE+".test.job.json", "--working_dir", "/home/"]}, "jobqueue": "batch_scratch_queue", "jobname": "job_"+MODULE+"_test"}
+with open(MODULE+'.test.job.json','w') as fout:
+    json.dump(io_json, fout)
