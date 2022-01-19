@@ -1,0 +1,1 @@
+{"input": ["s3://npipublicinternal/test/bcl/"], "output": ["s3://npipublicinternal/test/bcl_out/"], "alternate_inputs": ["s3://npipublicinternal/test/bcl/test.samplesheet.csv"], "alternate_outputs": [], "program_arguments": "", "sample_id": "bcl2fastq_test"}
